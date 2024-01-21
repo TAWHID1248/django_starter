@@ -1,0 +1,54 @@
+TEMPLATES_DIR  = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+
+INSTALLED_APPS = [
+
+    ...existing code
+    'django_cleanup.apps.CleanupConfig',
+    'crispy_forms',
+    'crispy_bootstrap4',
+]
+
+# bootstrap, bootstrap3, bootstrap4,  can be used
+CRISPY_TEMPLATE_PACK= 'bootstrap4'
+
+
+TEMPLATES = [
+    {
+         ...existing code
+        'DIRS': [TEMPLATES_DIR,],
+	 ...existing code
+]
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+STATIC_URL = 'static/'
+STATICFILES_DIR = [STATIC_DIR,]
+
+
+#media
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = 'media/'
+
+
+_________url.py________
+
+...existing code
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns, static
+
+
+urlpatterns = [
+    ...existing code
+    path('', include('quick_app.urls'))
+]
+
+
+...existing code
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

@@ -1,0 +1,29 @@
+**** window10 ****
+
+python -m venv venv
+
+Set-ExecutionPolicy RemoteSigned -Scope Process
+
+cd venv
+
+venv\Scripts\activate
+
+pip install django
+
+pip install djangorestframework pillow django-crispy-forms crispy-bootstrap4 django-cleanup 
+
+django-admin startproject project_name
+
+cd projectname
+
+python manage.py runserver
+
+python manage.py startapp app_name
+ 
+GO TO SETTINGS-PY-BASICS
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py createsuperuser
